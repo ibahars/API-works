@@ -1,4 +1,4 @@
-const express = require("express"); //express bağlantısı
+const express = require("express");
 const { body, validationResult } = require("express-validator");
 const port = 3000;
 const app = express();
@@ -22,12 +22,13 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
-//burada get isimli dosyayı çağırıyoruz.
-const routes1 = require("./get");
-app.use("/", routes1);
-
+// read.js dosyasını çağırıyoruz.
 const router2 = require("./read");
-app.use("/products", router2);
+app.get("/get-products", router2); // Bu satırı değiştirdik.
 
-const router3 = require("./readId");
-app.use("/products:3", router3);
+// Diğer yolları da ekleyebilirsiniz
+app.get("/get-products", (req, res) => {
+  // Burada başka bir GET işlemi tanımlayabilirsiniz.
+});
+
+// Post, Put, vb. işlemleri de ekleyebilirsiniz.
