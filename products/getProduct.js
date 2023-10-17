@@ -1,3 +1,4 @@
+//knex conneciton
 const knex = require("knex")({
   client: "mysql",
   connection: {
@@ -11,16 +12,15 @@ const knex = require("knex")({
 
 module.exports = (req, res) => {
   const productId = req.params.id;
-  const updatedProduct = req.body;
-  const { name, price } = updatedProduct;
-
+  const { name, price } = req.body;
   knex("products")
     .where({ id: productId })
-    .update({ name, price })
-    .then(() => {
-      res.send("products updated succesfully!");
+    .select("name", "price")
+    .then((products) => {
+      res.json(products);
     })
-    .catch((err) => {
-      res.send("error: " + err);
+    .catch((error) => {
+      console.error("database error", error);
+      res.status(500).send("database error!");
     });
 };

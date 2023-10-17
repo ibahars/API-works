@@ -1,9 +1,11 @@
+//express connection
 const express = require("express");
 const bodyParser = require("body-parser");
 const port = 3000;
 const app = express();
 app.use(bodyParser.json());
 
+//knex connection
 const { body, validationResult } = require("express-validator");
 const knex = require("knex")({
   client: "mysql",
@@ -16,33 +18,33 @@ const knex = require("knex")({
   },
 });
 
+// requiring the exported modules
 const welcomeProducts = require("./products/welcomeProducts");
 const getProducts = require("./products/getProducts");
-const getProduct = require("./products/getProductİd");
-const postProduct = require("./products/postProducts");
-const putProduct = require("./products/updateProducts");
-const updateProducts = require("./products/updateProducts");
-const deleteProducts = require("./products/deleteProducts");
+const getProduct = require("./products/getProduct");
+const postProduct = require("./products/postProduct");
+const updateProduct = require("./products/updateProducts");
+const deleteProduct = require("./products/deleteProduct");
 
-//açılış sayfası
+//openning page
 app.get("/", welcomeProducts);
 
-//verileri getirme
+//getting all data
 app.get("/products", getProducts);
 
-//spesifik bir veri getirme
+//getting one data with id
 app.get("/products/:id", getProduct);
 
-//veri ekleme
+//adding data
 app.post("/products", postProduct);
 
-//veri güncelleme
-app.put("/products/:id", updateProducts);
+//data update
+app.put("/products/:id", updateProduct);
 
-//veri silme
-app.delete("/products/:id", deleteProducts);
+//data deletion
+app.delete("/products/:id", deleteProduct);
 
-//Port dinlemeye başlanıyor
+//running server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

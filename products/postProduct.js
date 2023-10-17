@@ -1,3 +1,4 @@
+//knex conneciton
 const knex = require("knex")({
   client: "mysql",
   connection: {
@@ -16,7 +17,7 @@ module.exports = (req, res) => {
   knex("products")
     .insert({ id, name, price })
     .then(() => {
-      res.send("products added succesfully!");
+      res.send("Products added succesfully!");
     })
     .catch((err) => {
       res.send("error: " + err);
