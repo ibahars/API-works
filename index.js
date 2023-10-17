@@ -18,12 +18,16 @@ const knex = require("knex")({
 
 const welcomeProducts = require("./products/welcomeProducts");
 const getProducts = require("./products/getProducts");
+const getProduct = require("./products/getProductİd");
 
 //açılış sayfası
 app.get("/", welcomeProducts);
 
 //verileri getirme
 app.get("/products", getProducts);
+
+//spesifik bir veri getirme
+app.get("/products/:id", getProduct);
 
 //Port dinlemeye başlanıyor
 app.listen(port, () => {
