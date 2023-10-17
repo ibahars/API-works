@@ -22,6 +22,8 @@ const getProduct = require("./products/getProductİd");
 const postProduct = require("./products/postProducts");
 const putProduct = require("./products/updateProducts");
 const updateProducts = require("./products/updateProducts");
+const deleteProducts = require("./products/deleteProducts");
+
 //açılış sayfası
 app.get("/", welcomeProducts);
 
@@ -36,6 +38,9 @@ app.post("/products", postProduct);
 
 //veri güncelleme
 app.put("/products/:id", updateProducts);
+
+//veri silme
+app.delete("/products/:id", deleteProducts);
 
 //Port dinlemeye başlanıyor
 app.listen(port, () => {
