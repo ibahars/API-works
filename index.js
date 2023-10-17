@@ -20,7 +20,8 @@ const welcomeProducts = require("./products/welcomeProducts");
 const getProducts = require("./products/getProducts");
 const getProduct = require("./products/getProductİd");
 const postProduct = require("./products/postProducts");
-
+const putProduct = require("./products/updateProducts");
+const updateProducts = require("./products/updateProducts");
 //açılış sayfası
 app.get("/", welcomeProducts);
 
@@ -32,6 +33,10 @@ app.get("/products/:id", getProduct);
 
 //veri ekleme
 app.post("/products", postProduct);
+
+//veri güncelleme
+app.put("/products/:id", updateProducts);
+
 //Port dinlemeye başlanıyor
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
