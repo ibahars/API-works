@@ -19,6 +19,7 @@ const knex = require("knex")({
 const welcomeProducts = require("./products/welcomeProducts");
 const getProducts = require("./products/getProducts");
 const getProduct = require("./products/getProductİd");
+const postProduct = require("./products/postProducts");
 
 //açılış sayfası
 app.get("/", welcomeProducts);
@@ -29,6 +30,8 @@ app.get("/products", getProducts);
 //spesifik bir veri getirme
 app.get("/products/:id", getProduct);
 
+//veri ekleme
+app.post("/products", postProduct);
 //Port dinlemeye başlanıyor
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
