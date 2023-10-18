@@ -23,7 +23,7 @@ const welcomeProducts = require("./products/welcomeProducts");
 const getProducts = require("./products/getProducts");
 const getProduct = require("./products/getProduct");
 const postProduct = require("./products/postProduct");
-const updateProduct = require("./products/updateProducts");
+const updateProduct = require("./products/updateProduct");
 const deleteProduct = require("./products/deleteProduct");
 
 //openning page
